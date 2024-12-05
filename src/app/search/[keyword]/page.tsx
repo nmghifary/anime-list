@@ -8,6 +8,7 @@ interface IParams {
 const Page = async ({ params }: { params: IParams }) => {
   const promise = await params;
   const keyword = promise.keyword;
+  const decodeKeyword = decodeURI(keyword);
 
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_BASE_URL}/anime?q=${keyword}`
@@ -17,7 +18,7 @@ const Page = async ({ params }: { params: IParams }) => {
   return (
     <>
       <section>
-        <HeaderAnime title={`Pencarian untuk ${keyword}...`} />
+        <HeaderAnime title={`Pencarian untuk ${decodeKeyword}...`} />
         <GridList api={searchAnime} />
       </section>
     </>

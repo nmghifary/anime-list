@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 interface IApi {
-  data: Array<IAnime>;
+  data?: Array<IAnime>;
 }
 interface IAnime {
   mal_id: number;
@@ -13,9 +13,12 @@ interface IAnime {
 const GridList = ({ api }: { api: IApi }) => {
   return (
     <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-4 px-4">
-      {api.data.map((anime: IAnime, index: number) => {
+      {api.data?.map((anime: IAnime, index: number) => {
         return (
-          <div key={index} className="shadow-xl w-full h-full">
+          <div
+            key={index}
+            className="shadow-xl w-full h-full hover:text-accent"
+          >
             <Link href={`/${anime.mal_id}`} className="cursor-pointer">
               <Image
                 src={anime.images.webp.image_url}

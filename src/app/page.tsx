@@ -7,6 +7,7 @@ const Page = async () => {
     `${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?limit=8`
   );
   const topAnime = await response.json();
+  console.log(topAnime);
 
   return (
     <>

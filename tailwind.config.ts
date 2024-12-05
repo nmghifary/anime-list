@@ -11,14 +11,9 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        accent: '#ffc639',
       },
     },
-    colors: {
-      color: {
-        accent: '#ffc639',
-        beta: '#D69A00',
-      }
-    }
   },
   plugins: [],
 } satisfies Config;

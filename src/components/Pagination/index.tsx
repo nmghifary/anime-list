@@ -1,31 +1,14 @@
-import { Dispatch } from "react";
-
 interface IPagination {
   currentPage: number;
   lastPage: number;
-  setCurrentPage: Dispatch<React.SetStateAction<number>>;
+  handleOnClick: (page: number) => void;
 }
 
-const Pagination = ({ currentPage, lastPage, setCurrentPage }: IPagination) => {
-  const scrollTop = () => {
-    scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-  const handlePrevButton = () => {
-    setCurrentPage((prevState: number) => prevState - 1);
-    scrollTop();
-  };
-
-  const handleNextButton = () => {
-    setCurrentPage((prevState: number) => prevState + 1);
-    scrollTop();
-  };
+const Pagination = ({ currentPage, lastPage, handleOnClick }: IPagination) => {
   return (
     <div className="flex justify-end items-center gap-4 mx-4 my-2 text-white">
       <button
-        onClick={handlePrevButton}
+        onClick={() => handleOnClick(currentPage - 1)}
         disabled={currentPage === 1}
         className="px-1 pl-2 bg-cyan-700 rounded-s-xl hover:bg-cyan-500"
       >
@@ -33,7 +16,7 @@ const Pagination = ({ currentPage, lastPage, setCurrentPage }: IPagination) => {
       </button>
       <p className="">{`${currentPage} of ${lastPage}`}</p>
       <button
-        onClick={handleNextButton}
+        onClick={() => handleOnClick(currentPage + 1)}
         disabled={currentPage === lastPage}
         className="px-1 pr-2 bg-cyan-700 rounded-e-xl hover:bg-cyan-500"
       >

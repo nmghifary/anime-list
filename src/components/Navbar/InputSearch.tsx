@@ -7,22 +7,15 @@ const InputSearch: React.FC = () => {
   const searchRef = useRef<HTMLInputElement | null>(null);
   const router = useRouter();
 
-  const handleSearch = () => {
+  const handleSearch = (event: KeyboardEvent<HTMLInputElement> | FormEvent) => {
+    if ("key" in event && event.key !== "Enter") {
+      return;
+    }
+    event.preventDefault();
     const keyword = searchRef.current?.value;
     if (keyword) {
       router.push(`/search/${encodeURIComponent(keyword)}`);
     }
-  };
-
-  const handleEnter = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      handleSearch();
-    }
-  };
-  const handleClick = (event: FormEvent) => {
-    event.preventDefault();
-    handleSearch();
   };
 
   return (
@@ -31,9 +24,9 @@ const InputSearch: React.FC = () => {
         placeholder="pencarian ..."
         className="w-full rounded-md p-2"
         ref={searchRef}
-        onKeyDown={handleEnter}
+        onKeyDown={handleSearch}
       />
-      <button onClick={handleClick} className="absolute top-2 right-2">
+      <button onClick={handleSearch} className="absolute top-2 right-2">
         logo
       </button>
     </div>

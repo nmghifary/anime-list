@@ -1,4 +1,4 @@
-import getApiResponse from "@/app/libs/api-libs";
+import { getApiResponse } from "@/libs/api-libs";
 import VideoPlayer from "@/components/VideoPlayer";
 import Image from "next/image";
 
@@ -32,7 +32,7 @@ const Page = async ({ params }: { params: IParams }) => {
             <button>Episodes</button>
           </div>
           <div className="flex flex-wrap md:flex-nowrap gap-2 items-stretch">
-            <div className="flex gap-4 bg-slate-700 border-slate-500 border-2 w-full rounded my-2 py-4">
+            <div className="flex gap-4 bg-slate-700 border-slate-500 border-2 w-full rounded mt-2 md:my-2 py-4">
               <div className="w-full sm:w-[15%] border-r-2 border-r-slate-800 relative">
                 <div className="justify-center items-center text-center">
                   <div className="bg-accent rounded-md p-0.5 m-auto w-[70%] sm:w-[50%]">
@@ -80,7 +80,7 @@ const Page = async ({ params }: { params: IParams }) => {
               />
             </div>
             {/* layar kecil */}
-            <div className="block md:hidden w-full my-2">
+            <div className="block md:hidden w-full">
               <VideoPlayer
                 youtubeId={detailAnime.data.trailer.youtube_id}
                 heightVideo={210}

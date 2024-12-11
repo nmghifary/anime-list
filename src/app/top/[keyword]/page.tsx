@@ -4,7 +4,7 @@ import GridList from "@/components/AnimeList/GridList";
 import Pagination from "@/components/Pagination";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import getApiResponse from "@/app/libs/api-libs";
+import { getApiResponse } from "@/libs/api-libs";
 
 interface IApi {
   pagination?: IPagination;

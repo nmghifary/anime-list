@@ -13,7 +13,7 @@ const InputSearch: React.FC = () => {
     }
     event.preventDefault();
     const keyword = searchRef.current?.value;
-    if (keyword) {
+    if (keyword && keyword?.trim() !== "") {
       router.push(`/search/${encodeURIComponent(keyword)}`);
     }
   };

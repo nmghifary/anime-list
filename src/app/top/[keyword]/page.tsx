@@ -40,7 +40,7 @@ const Page = () => {
   }, [currentPage, keyword]);
 
   const handleChangePage = (page: number): void => {
-    const scrollTop = () => {
+    const scrollToTop = () => {
       scrollTo({
         top: 0,
         behavior: "smooth",
@@ -48,7 +48,7 @@ const Page = () => {
     };
 
     router.push(`?page=${page}`);
-    scrollTop();
+    scrollToTop();
   };
 
   return (
@@ -59,6 +59,11 @@ const Page = () => {
         handleOnClick={handleChangePage}
       />
       <GridList api={data} />
+      <Pagination
+        currentPage={currentPage}
+        lastPage={lastPage}
+        handleOnClick={handleChangePage}
+      />
     </div>
   );
 };

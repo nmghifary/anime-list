@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { FormEvent, KeyboardEvent, useRef } from "react";
+import { IoIosSearch } from "react-icons/io";
 
 const InputSearch: React.FC = () => {
   const searchRef = useRef<HTMLInputElement | null>(null);
@@ -26,8 +27,11 @@ const InputSearch: React.FC = () => {
         ref={searchRef}
         onKeyDown={handleSearch}
       />
-      <button onClick={handleSearch} className="absolute top-2 right-2">
-        logo
+      <button
+        onClick={handleSearch}
+        className="absolute right-2 top-1/2 -translate-y-1/2 text-2xl"
+      >
+        <IoIosSearch />
       </button>
     </div>
   );

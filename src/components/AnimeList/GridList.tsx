@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
-interface IApi {
+export interface IApi {
+  pagination?: { last_visible_page: number };
   data?: Array<IData>;
 }
 interface IData {

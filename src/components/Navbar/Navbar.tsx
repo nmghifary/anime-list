@@ -47,7 +47,7 @@ const Navbar = () => {
           <div className="flex justify-between items-center gap-2">
             {session ? (
               <Link
-                href={"/"}
+                href={"/users/dashboard"}
                 className="px-4 py-2 rounded bg-slate-800 hover:bg-slate-700 text-accent font-bold"
               >
                 Dashboard

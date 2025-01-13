@@ -1,23 +1,10 @@
 "use client";
 
-import GridList from "@/components/AnimeList/GridList";
+import GridList, { IApi } from "@/components/AnimeList/GridList";
 import Pagination from "@/components/Pagination";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { getApiResponse } from "@/libs/api-libs";
-
-interface IApi {
-  pagination?: IPagination;
-  data?: Array<IData>;
-}
-interface IData {
-  mal_id: number;
-  title: string;
-  images: { webp: { image_url: string } };
-}
-interface IPagination {
-  last_visible_page: number;
-}
 
 const Page = () => {
   const pathname = usePathname();

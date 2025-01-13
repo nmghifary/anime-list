@@ -35,7 +35,7 @@ const Page = async ({ params }: { params: IParams }) => {
             <div className="flex gap-4 bg-slate-700 border-slate-500 border-2 w-full rounded mt-2 md:my-2 py-4">
               <div className="w-full sm:w-[15%] border-r-2 border-r-slate-800 relative">
                 <div className="justify-center items-center text-center">
-                  <div className="bg-accent rounded-md p-0.5 m-auto w-[70%] sm:w-[50%]">
+                  <div className="inline-flex bg-accent rounded-md py-0.5 px-1 m-auto">
                     <p>SCORE</p>
                   </div>
                   <p className="text-4xl font-bold">{detailAnime.data.score}</p>

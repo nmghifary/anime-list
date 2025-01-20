@@ -1,6 +1,8 @@
 import { getApiResponse } from "@/libs/api-libs";
 import VideoPlayer from "@/components/VideoPlayer";
 import Image from "next/image";
+import { AuthUserSessionSSR } from "@/libs/auth-libs-server";
+import CollectionButton from "@/components/AnimeList/CollectionButton";
 
 interface IParams {
   id: number;
@@ -10,12 +12,20 @@ const Page = async ({ params }: { params: IParams }) => {
   const promise = await params;
   const id = promise.id;
   const detailAnime = await getApiResponse(`anime/${id}`);
+  const user = await AuthUserSessionSSR();
 
   return (
-    <>
-      <h3 className="m-4 text-4xl font-bold">{detailAnime.data.title}</h3>
-
-      <div className="flex flex-wrap md:flex-nowrap gap-4 m-4 justify-center">
+    <div className="m-4 space-y-4">
+      <div className="flex items-center gap-4 w-full">
+        <h3 className="grow text-4xl font-bold">{detailAnime.data.title}</h3>
+        <CollectionButton
+          user_email={user?.email}
+          anime_mal_id={detailAnime.data.mal_id}
+          anime_image={detailAnime.data.images.webp.image_url}
+          anime_title={detailAnime.data.title}
+        />
+      </div>
+      <div className="flex flex-wrap md:flex-nowrap gap-4 justify-center">
         <div className="w-[70%] md:w-[30%]">
           <Image
             src={detailAnime.data.images.webp.image_url}
@@ -97,7 +107,7 @@ const Page = async ({ params }: { params: IParams }) => {
           </section>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

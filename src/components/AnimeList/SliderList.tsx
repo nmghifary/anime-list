@@ -29,6 +29,7 @@ const SliderList = ({ api }: { api: IApi }) => {
                 width={600}
                 height={600}
                 className="aspect-[3/4] object-cover"
+                loading="lazy"
               />
               <h3>{data.title}</h3>
             </Link>

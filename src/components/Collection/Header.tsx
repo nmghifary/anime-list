@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { FormEvent } from "react";
 import { IoMdArrowRoundBack } from "react-icons/io";
 
-const Header = ({ title }: { title?: string }) => {
+const Header = ({ title }: { title: string }) => {
   const router = useRouter();
 
   const handleClickBack = (event: FormEvent) => {

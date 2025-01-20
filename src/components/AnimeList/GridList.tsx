@@ -26,10 +26,11 @@ const GridList = ({ api }: { api: IApi }) => {
             >
               <Image
                 src={data.images.webp.image_url}
-                alt="..."
+                alt={data.title}
                 width={600}
                 height={600}
                 className="aspect-[3/4] object-cover"
+                loading="lazy"
               />
               <h3>{data.title}</h3>
             </Link>

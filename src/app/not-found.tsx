@@ -1,8 +1,16 @@
-// "use  client";
+"use client";
 
-import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { MouseEvent } from "react";
 
 const Page = () => {
+  const router = useRouter();
+
+  const handleClickBack = (event: MouseEvent) => {
+    event.preventDefault();
+    router.back();
+  };
+
   return (
     <div className="flex flex-col justify-center items-center min-h-screen">
       <div className="flex gap-4 text-accent items-center justify-center">
@@ -11,9 +19,12 @@ const Page = () => {
           404 NOT FOUND
         </h3>
       </div>
-      <Link href={"/"} className="text-l underline hover:text-accent">
+      <button
+        onClick={handleClickBack}
+        className="text-l underline hover:text-accent"
+      >
         back...
-      </Link>
+      </button>
     </div>
   );
 };

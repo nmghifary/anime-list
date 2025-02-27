@@ -34,7 +34,7 @@ const Navbar = () => {
 
   return (
     <header
-      className={`sticky top-0 w-full z-50 transition-transform duration-300 
+      className={`sticky top-0 w-full z-20 transition-transform duration-300 
         ${isVisible ? "translate-y-0" : "-translate-y-full"}
         `}
     >

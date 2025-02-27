@@ -26,8 +26,8 @@ const SliderList = ({ api }: { api: IApi }) => {
               <Image
                 src={data.images.webp.image_url}
                 alt="..."
-                width={600}
-                height={600}
+                width={200}
+                height={300}
                 className="aspect-[3/4] object-cover"
                 loading="lazy"
               />

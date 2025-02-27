@@ -1,12 +1,6 @@
-import { AuthUserSessionSSR } from "@/libs/auth-libs-server";
+import { AuthUserSessionSSR, IUser } from "@/libs/auth-libs-server";
 import Image from "next/image";
 import Link from "next/link";
-
-interface IUser {
-  name?: string | null;
-  email?: string | null;
-  image?: string | null;
-}
 
 const Pages = async () => {
   const user: IUser | undefined = await AuthUserSessionSSR();

@@ -1,6 +1,6 @@
 "use client";
 
-import { supabase } from "@/libs/supabaseClient";
+import { signIn } from "next-auth/react";
 import { MouseEvent, useEffect, useState } from "react";
 import { IoHeart, IoHeartOutline } from "react-icons/io5";
 
@@ -20,17 +20,24 @@ const CollectionButton = ({
   const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const { data } = await supabase
-        .from("collection")
-        .select()
-        .eq("anime_mal_id", anime_mal_id)
-        .eq("user_email", user_email);
+    if (!user_email) return;
 
-      if (data?.length == 0) {
-        setIsLiked(false);
-      } else {
+    const fetchData = async () => {
+      const response = await fetch(
+        `/api/v1/collection?user_email=${encodeURIComponent(
+          user_email
+        )}&anime_mal_id=${encodeURIComponent(anime_mal_id)}`,
+        {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
+      const collection = await response.json();
+      if (collection.status == "200") {
         setIsLiked(true);
+      } else {
+        setIsLiked(false);
       }
     };
     fetchData();
@@ -40,29 +47,30 @@ const CollectionButton = ({
     event: MouseEvent<HTMLButtonElement>
   ) => {
     event.preventDefault();
-    // Jika tidak ada di db
+    if (!user_email) return signIn("github");
+    // Jika tidak ada di db maka tambahkan
+    let response;
     if (!isLiked) {
-      const { error } = await supabase
-        .from("collection")
-        .insert([{ user_email, anime_mal_id, anime_title, anime_image }]);
-
-      if (error) {
-        alert(error.message);
-        setIsLiked(false);
-      } else {
-        setIsLiked(true);
-      }
-      // Jika ada di db
+      response = await fetch("/api/v1/collection", {
+        method: "POST",
+        body: JSON.stringify({
+          user_email,
+          anime_mal_id,
+          anime_title,
+          anime_image,
+        }),
+      });
+      // Jika ada di db maka hapus
     } else {
-      const response = await supabase
-        .from("collection")
-        .delete()
-        .eq("anime_mal_id", anime_mal_id)
-        .eq("user_email", user_email);
-
-      if (response.status == 204) {
-        setIsLiked(false);
-      }
+      response = await fetch("/api/v1/collection", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_email, anime_mal_id }),
+      });
+    }
+    const collection = await response.json();
+    if (collection.status === 200 || collection.status === 201) {
+      setIsLiked(!isLiked);
     }
   };
 

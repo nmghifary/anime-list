@@ -17,6 +17,9 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "CUY ANIMELIST",
   description: "Website Kumpulan Anime Kesukaan Anda",
+  icons: {
+    icon: "/favicon.png", // or '/favicon.png', etc.
+  },
 };
 
 export default function RootLayout({
@@ -29,6 +32,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-800 text-white`}
       >
+        <div id="modal"></div>
         <NavbarWrapper />
         {children}
       </body>

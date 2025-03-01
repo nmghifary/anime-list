@@ -2,13 +2,8 @@ import { getApiResponse } from "@/libs/api-libs";
 import GridList from "@/components/AnimeList/GridList";
 import HeaderAnime from "@/components/AnimeList/HeaderAnime";
 
-interface IParams {
-  keyword: string;
-}
-
-const Page = async ({ params }: { params: IParams }) => {
-  const promise = await params;
-  const keyword = promise.keyword;
+const Page = async (props: { params: Promise<{ keyword: string }> }) => {
+  const { keyword } = await props.params;
   const decodeKeyword = decodeURI(keyword);
   const searchAnime = await getApiResponse("anime", `q=${decodeKeyword}`);
 

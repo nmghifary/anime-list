@@ -5,14 +5,9 @@ import { AuthUserSessionSSR } from "@/libs/auth-libs-server";
 import CollectionButton from "@/components/AnimeList/CollectionButton";
 import Comment from "@/components/Comment";
 
-interface IParams {
-  id: number;
-}
-
-const Page = async ({ params }: { params: IParams }) => {
-  const promise = await params;
-  const mal_id = promise.id;
-  const detailAnime = await getApiResponse(`anime/${mal_id}`);
+const Page = async (props: { params: Promise<{ id: string }> }) => {
+  const { id } = await props.params;
+  const detailAnime = await getApiResponse(`anime/${id}`);
   const user = await AuthUserSessionSSR();
 
   return (

@@ -21,14 +21,14 @@ const SliderList = ({ api }: { api: IApi }) => {
           >
             <Link
               href={`/detail/manga/${data.mal_id}`}
-              className="cursor-pointer hover:text-accent"
+              className="cursor-pointer hover:text-accent block"
             >
               <Image
                 src={data.images.webp.image_url}
                 alt="..."
                 width={200}
                 height={300}
-                className="aspect-[3/4] object-cover"
+                className="aspect-[3/4] object-cover rounded-lg"
                 loading="lazy"
               />
               <h3>{data.title}</h3>

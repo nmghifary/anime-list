@@ -5,6 +5,7 @@ A portfolio website using a public API for learning purposes using Next.js.<br/>
 Technologies	: React, Typescript, Next-js<br/>
 Features	: Bookmark, Auth(next-auth), ORM (Prisma), Posgres Supabase, Comment and Likes<br/>
 Dummy comment feature in Sousou no Frieren<br/>
+Manga details are not availabe on public api<br/>
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 

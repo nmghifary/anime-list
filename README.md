@@ -1,3 +1,11 @@
+### Anime-list
+Link https://anime-list-next-typescript.vercel.app/<br/>
+Github https://github.com/nmghifary/anime-list-next-typescript<br/>
+A portfolio website using a public API for learning purposes using Next.js.<br/>
+Technologies	: React, Typescript, Next-js<br/>
+Features	: Bookmark, Auth(next-auth), ORM (Prisma), Posgres Supabase, Comment and Likes<br/>
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

@@ -7,6 +7,11 @@ Features	: Bookmark, Auth(next-auth), ORM (Prisma), Posgres Supabase, Comment an
 Dummy comment feature in Sousou no Frieren<br/>
 Manga details are not availabe on public api<br/>
 
+#### Web Preview
+![Web Preview Screenshot](https://github.com/nmghifary/anime-list-next-typescript/blob/15078b313cdfb8e2b4eb17c95c14e5397c542c4a/public/highlight.jpg)
+#### Comments Feature
+![Comments Feature Screenshot](https://github.com/nmghifary/anime-list-next-typescript/blob/15078b313cdfb8e2b4eb17c95c14e5397c542c4a/public/comment%20feature.jpg)
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
